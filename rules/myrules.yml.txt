@@ -1,0 +1,18 @@
+groups:
+  - name: my-custom-metrics
+
+  rules:
+    - record: malhar_mem_total
+      expr: (node_memory_MemTotal_bytes - node_memory_MemFree_bytes) / 1024 / 1024
+
+    - record: prod_up
+      expr: up{env="prod"}[10m]
+
+    - alert: ProdNodeDown
+      expr: up{env="prod"} == 0
+      for: 2m
+      labels:
+        severity: critical
+      annotations:
+        summary: "this is prod in INDIA"
+        description: "this is desc {{ labels.job }} "

@@ -1,0 +1,15 @@
+  - job_name: "linuxnode"
+    static_configs:
+      - targets: ["20.55.63.31:9100"]
+        labels:
+            region: "IN"
+            team: "web"
+            env: "test"
+
+
+  - job_name: "dockernode"
+    static_configs:
+      - targets: ["43.204.238.92:9323"]
+        labels:
+            region: "US"
+
